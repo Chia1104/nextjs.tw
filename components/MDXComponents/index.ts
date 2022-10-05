@@ -6,3 +6,4 @@ export {
   MDXTBody as tbody,
   MDXTr as tr,
 } from './Table';
+export { MDXCode as code } from './Code';
