@@ -2,7 +2,7 @@ import { useCopyToClipboard } from '../../../hooks';
 import { Prism, type SyntaxHighlighterProps as PrismProps } from 'react-syntax-highlighter';
 import CodeStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
 import { type FC, type DetailedHTMLProps, type HTMLAttributes } from 'react';
-import { Document, DocumentCheck } from '@components/icons';
+import { CopyButton } from '@components/UI';
 
 interface SyntaxHighlighterProps extends PrismProps {
   match: RegExpExecArray;
@@ -28,18 +28,10 @@ const SyntaxHighlighter: FC<SyntaxHighlighterProps> = (props) => {
   return (
     <>
       <div className="w-full relative">
-        <button
-          onClick={handleCopy}
-          className={`border rounded p-1 absolute right-0 mr-2 mt-2 
-            ${ isCopied && 'border-green-300' }`}>
-          {
-            isCopied ? (
-              <DocumentCheck className="w-4 h-4 text-green-300" />
-            ) : (
-              <Document className="w-4 h-4 text-white" />
-            )
-          }
-        </button>
+        <CopyButton
+          isCopied={isCopied as boolean}
+          handleCopy={handleCopy}
+          className="absolute right-0 mr-2 mt-2"/>
       </div>
       <Prism
         language={match[1]}
