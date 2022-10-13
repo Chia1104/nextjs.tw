@@ -1,4 +1,3 @@
-import { useCopyToClipboard } from '../../../hooks';
 import { Prism, type SyntaxHighlighterProps as PrismProps } from 'react-syntax-highlighter';
 import CodeStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
 import { type FC, type DetailedHTMLProps, type HTMLAttributes } from 'react';
@@ -22,16 +21,14 @@ const Code: FC<
 
 const SyntaxHighlighter: FC<SyntaxHighlighterProps> = (props) => {
   const { children, match } = props;
-  const { copy, isCopied } = useCopyToClipboard('Copied');
-  const handleCopy = () => copy(children as string);
 
   return (
     <>
       <div className="w-full relative">
         <CopyButton
-          isCopied={isCopied as boolean}
-          handleCopy={handleCopy}
-          className="absolute right-0 mr-2 mt-2"/>
+          value={children as string}
+          msg="Copied!"
+          className="absolute right-0 mr-4 mt-4" />
       </div>
       <Prism
         language={match[1]}

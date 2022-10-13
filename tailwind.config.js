@@ -17,6 +17,16 @@ module.exports = {
         '2xl': '18rem',
       },
     },
+    extend: {
+      colors: {
+        success: "#4caf50",
+        info: "#2196f3",
+        warning: "#ff9800",
+        danger: "#f44336",
+        light: "#fafafa",
+        dark: "#212121",
+      },
+    },
   },
   plugins: [
     plugin(function({ addVariant, addUtilities, e }) {
